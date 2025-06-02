@@ -1,0 +1,270 @@
+{% extends "layout.html" %}
+{% block body %}
+<section class="max-w-4xl mx-auto px-4 py-12">
+  <h1 class="text-4xl font-bold text-center mb-6" style="color: #F25835;">About Us</h1>
+
+  <div class="text-center mb-12">
+    <h2 class="text-2xl font-semibold mb-2" style="color: #F25835;">Welcome to Policy Mandi</h2>
+    <p class="text-lg text-gray-600">Your Trusted Insurance Marketplace</p>
+  </div>
+
+  <p class="text-gray-700 mb-8 text-justify">
+    At Policy Mandi, we believe insurance should be simple, transparent, and built around you.
+    Whether it’s life, health, or any other form of protection, we’re here to connect you with
+    solutions that safeguard your future and bring peace of mind.
+  </p>
+
+  <hr class="border-gray-300 my-8" />
+
+  <div class="mb-10">
+    <h3 class="text-xl font-semibold mb-2" style="color: #F25835;">Our Mission</h3>
+    <p class="text-gray-700">
+      To connect people with insurance solutions that are simple, transparent, and built to protect
+      their future — for life, health, and beyond.
+    </p>
+  </div>
+
+  <hr class="border-gray-300 my-8" />
+
+  <div class="mb-10">
+    <h3 class="text-xl font-semibold mb-2" style="color: #F25835;">Our Vision</h3>
+    <p class="text-gray-700">
+      To be the most trusted and innovative insurance marketplace, helping every individual build a
+      safer, smarter tomorrow.
+    </p>
+  </div>
+
+  <hr class="border-gray-300 my-8" />
+
+  <div class="mb-10">
+    <h3 class="text-xl font-semibold mb-4" style="color: #F25835;">What Drives Us</h3>
+    <ul class="list-disc list-inside text-gray-700 space-y-2">
+      <li><strong>Customer First:</strong> Your needs guide everything we do.</li>
+      <li><strong>Trust and Transparency:</strong> Expect honest advice and clear solutions — every time.</li>
+      <li><strong>Innovation-Led:</strong> We leverage cutting-edge technology to simplify and accelerate your insurance journey.</li>
+      <li><strong>Reliability for Life:</strong> We’re with you at every stage, for life.</li>
+      <li><strong>Partnership Excellence:</strong> We work with top insurers to bring you the best options.</li>
+      <li><strong>Simplicity:</strong> No jargon, no confusion — just insurance made easy.</li>
+    </ul>
+  </div>
+
+  <hr class="border-gray-300 my-8" />
+
+<!-- Meet the Team -->
+<div class="mb-10">
+  <h3 class="text-xl font-semibold mb-6 text-left" style="color: #F25835;">Core Team</h3>
+  <div class="sm:grid grid-cols-2 gap-6">
+
+    <!-- Team Member 1: Akshiet Pandey -->
+    <div class="max-w-sm w-full lg:max-w-full lg:flex mx-auto mb-10 shadow-lg">
+      <div class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden"
+          style="background-image: url('{{ url_for('static', filename='assets/images/Team/Akshiet_Pandey.jpeg') }}')"
+          title="Akshiet Pandey">
+      </div>
+      <div
+          class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4">
+          <div>
+              <a href="#"
+                  class="text-gray-900 font-bold text-xl mb-2" style="text-decoration:none;">Akshiet Pandey</a>
+              <p class="text-sm font-medium" style="color: #F25835;">
+                  Chairman and Managing Director
+              </p>
+              <p class="text-gray-600 text-sm mt-2 px-2">
+                  At Policy Mandi, we are committed to making insurance simple, transparent, and accessible for every Indian.
+              </p>
+          </div>
+      </div>
+    </div>
+
+    <!-- Team Member 2: Antriksha Kumar Garg -->
+    <div class="max-w-sm w-full lg:max-w-full lg:flex mx-auto mb-10 shadow-lg">
+      <div class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden"
+          style="background-image: url('{{ url_for('static', filename='assets/images/Team/Antriksha_Kumar_Garg.jpg') }}')"
+          title="Antriksha Kumar Garg">
+      </div>
+      <div
+          class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4">
+          <div>
+              <a href="#"
+                  class="text-gray-900 font-bold text-xl mb-2" style="text-decoration:none;">Antriksha Kumar Garg</a>
+              <p class="text-sm font-medium" style="color: #F25835;">
+                  Chief Operating Officer
+              </p>
+              <p class="text-gray-600 text-sm mt-2 px-2">
+                  Second Highest Authority in Policy Mandi Company
+              </p>
+          </div>
+      </div>
+    </div>
+
+    <!-- Team Member 3: Gaurav Tomar -->
+    <div class="max-w-sm w-full lg:max-w-full lg:flex mx-auto mb-10 shadow-lg">
+      <div class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden"
+          style="background-image: url('{{ url_for('static', filename='assets/images/Team/Gaurav_Tomar.jpeg') }}')"
+          title="Gaurav Tomar">
+      </div>
+      <div
+          class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4">
+          <div>
+              <a href="#"
+                  class="text-gray-900 font-bold text-xl mb-2" style="text-decoration:none;">Gaurav Tomar</a>
+              <p class="text-sm font-medium" style="color: #F25835;">
+                  Joint Assistant Director
+              </p>
+              <p class="text-gray-600 text-sm mt-2 px-2">
+                  Our focus at Policy Mandi remains on driving efficiency, enhancing service quality, and supporting the vision of a more inclusive and secure insurance ecosystem.
+              </p>
+          </div>
+      </div>
+    </div>
+
+    <!-- Team Member 4: Amandeep Singh -->
+    <div class="max-w-sm w-full lg:max-w-full lg:flex mx-auto mb-10 shadow-lg">
+      <div class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden"
+          style="background-image: url('{{ url_for('static', filename='assets/images/Team/Amandeep_Singh.jpeg') }}')"
+          title="Amandeep Singh">
+      </div>
+      <div
+          class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4">
+          <div>
+              <a href="#"
+                  class="text-gray-900 font-bold text-xl mb-2" style="text-decoration:none;">Amandeep Singh</a>
+              <p class="text-sm font-medium" style="color: #F25835;">
+                  Joint Assistant Director
+              </p>
+              <p class="text-gray-600 text-sm mt-2 px-2">
+                  We at Policy Mandi strive to ensure seamless service delivery and operational excellence, reinforcing our commitment to customer satisfaction and trust.
+              </p>
+          </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<hr class="border-gray-300 my-8" />
+
+  <div class="text-center">
+    <p class="text-xl font-semibold" style="color: #F25835;">
+      Explore. Compare. Insure — with confidence.
+    </p>
+    <p class="text-gray-700 mt-2 mb-6">
+      Let Policy Mandi be your partner in building a future that’s secure, smart, and worry-free.
+    </p>
+
+    <!-- CTA Button -->
+    <a href="/Contact" 
+       class="inline-block text-white font-medium py-3 px-6 rounded-md transition-colors duration-300"
+       style="background-color: #F25835;"
+       onmouseover="this.style.backgroundColor='#8C463F';"
+       onmouseout="this.style.backgroundColor='#F25835';">
+      Get Started
+    </a>
+  </div>
+</section>
+
+<style>
+  /* Arrow container */
+  .slider-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    background-color: #F25835;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    z-index: 10;
+  }
+
+  .slider-arrow:hover,
+  .slider-arrow:focus {
+    background-color: #8C463F;
+    outline: none;
+  }
+
+  /* Left arrow position and animation */
+  .slider-arrow-left {
+    left: 10px;
+    animation: slideLeft 1.5s ease-in-out infinite alternate;
+  }
+
+  /* Right arrow position and animation */
+  .slider-arrow-right {
+    right: 10px;
+    animation: slideRight 1.5s ease-in-out infinite alternate;
+  }
+
+  /* Sliding animations */
+  @keyframes slideLeft {
+    0% { transform: translateY(-50%) translateX(0); }
+    100% { transform: translateY(-50%) translateX(-10px); }
+  }
+
+  @keyframes slideRight {
+    0% { transform: translateY(-50%) translateX(0); }
+    100% { transform: translateY(-50%) translateX(10px); }
+  }
+
+  /* SVG arrows */
+  .slider-arrow::before {
+    content: '';
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+  }
+
+  .slider-arrow-left::before {
+    background-image: url('data:image/svg+xml;utf8,<svg fill="%23fff" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>');
+  }
+
+  .slider-arrow-right::before {
+    background-image: url('data:image/svg+xml;utf8,<svg fill="%23fff" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg>');
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const carouselInner = document.getElementById('carousel-inner');
+    const totalItems = carouselInner.children.length;
+    let currentIndex = 0;
+
+    // Show slide by updating transform
+    function showSlide(index) {
+      if (index < 0) index = totalItems - 1;
+      if (index >= totalItems) index = 0;
+      currentIndex = index;
+      carouselInner.style.transform = `translateX(-${index * 100}%)`;
+    }
+
+    // Left arrow click handler
+    document.querySelector('.slider-arrow-left').addEventListener('click', () => {
+      showSlide(currentIndex - 1);
+    });
+
+    // Right arrow click handler
+    document.querySelector('.slider-arrow-right').addEventListener('click', () => {
+      showSlide(currentIndex + 1);
+    });
+
+    // Optional: allow keyboard navigation on arrows
+    document.querySelectorAll('.slider-arrow').forEach(arrow => {
+      arrow.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          arrow.click();
+        }
+      });
+    });
+  });
+</script>
+
+{% endblock %}
