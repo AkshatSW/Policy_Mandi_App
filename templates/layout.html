@@ -4,7 +4,25 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{% block title %}{{ page_title }}{% endblock %}</title>
+
+    <title>{% block title %}Policy Mandi | Trusted Insurance Marketplace{% endblock %}</title>
+
+    <meta name="description" content="{% block meta_description %}Policy Mandi offers simple and reliable life and health insurance plans to secure your future.{% endblock %}" />
+    <meta name="keywords" content="Policy Mandi, life insurance India, health insurance, insurance marketplace, financial security, insurance plans" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:title" content="{% block og_title %}Policy Mandi | Trusted Insurance Marketplace{% endblock %}" />
+    <meta property="og:description" content="{% block og_description %}Policy Mandi offers simple and reliable life and health insurance plans to secure your future.{% endblock %}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="{{ request.url }}" />
+    <meta property="og:image" content="{{ url_for('static', filename='assets/favicons/apple-touch-icon.png') }}" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="{% block twitter_title %}Policy Mandi | Trusted Insurance Marketplace{% endblock %}" />
+    <meta name="twitter:description" content="{% block twitter_description %}Policy Mandi offers simple and reliable life and health insurance plans to secure your future.{% endblock %}" />
+    <meta name="twitter:image" content="{{ url_for('static', filename='assets/favicons/apple-touch-icon.png') }}" />
 
     <!-- CSS -->
     <link
@@ -24,14 +42,12 @@
       rel="stylesheet"
     />
 
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='assets/favicons/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='assets/favicons/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='assets/favicons/favicon-16x16.png') }}">
+    <link rel="manifest" href="{{ url_for('static', filename='assets/favicons/site.webmanifest') }}">
 
-     <!-- Favicon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="{{url_for('static', filename='assets/favicons/apple-touch-icon.png')}}">
-    <link rel="icon" type="image/png" sizes="32x32" href="{{url_for('static', filename='assets/favicons/favicon-32x32.png')}}">
-    <link rel="icon" type="image/png" sizes="16x16" href="{{url_for('static', filename='assets/favicons/favicon-16x16.png')}}">
-    <link rel="manifest" href="{{url_for('static', filename='assets/favicons/site.webmanifest')}}">
-
-    
     <!-- JavaScript -->
     <script
       src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"
@@ -53,17 +69,13 @@
       .bg-highlight { background-color: #8C463F; }
       .bg-light { background-color: #F2F2F2; }
       .text-light { color: #F2F2F2; }
-    
-
       .svg-icon {
         width: 36px;
         height: 36px;
         fill: white;
-        filter: brightness(0) invert(1); /* Converts the SVG to white */
-    }
-    
+        filter: brightness(0) invert(1);
+      }
     </style>
-
   </head>
 
   <body class=" text-light">
