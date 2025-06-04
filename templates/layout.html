@@ -24,6 +24,14 @@
       rel="stylesheet"
     />
 
+
+     <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="{{url_for('static', filename='assets/favicons/apple-touch-icon.png')}}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{url_for('static', filename='assets/favicons/favicon-32x32.png')}}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{url_for('static', filename='assets/favicons/favicon-16x16.png')}}">
+    <link rel="manifest" href="{{url_for('static', filename='assets/favicons/site.webmanifest')}}">
+
+    
     <!-- JavaScript -->
     <script
       src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"
@@ -170,6 +178,97 @@
 
     {% block body %} {% endblock %}
 
+<!-- Popup Overlay -->
+<div id="popupForm" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 hidden">
+  <div class="bg-white rounded-xl shadow-lg w-11/12 sm:w-96 p-6 relative">
+
+    <!-- Close Button -->
+    <button id="closePopup" class="absolute top-2 right-2 text-gray-500 hover:text-gray-700 text-xl font-bold">&times;</button>
+
+    <!-- Heading -->
+    <h2 class="text-xl font-semibold text-gray-800 mb-2">Get in touch for exciting offers</h2>
+    <p class="text-sm text-gray-600 mb-4">Share your contact details and we'll reach out to you!</p>
+
+    <!-- Contact Form -->
+    <form id="contactForm" method="POST" action="/submit-contact" onsubmit="return validateForm()">
+      <input type="text" name="name" id="name" required placeholder="Your name"
+        pattern="^[a-zA-Z\s]{2,50}$"
+        title="Please enter a valid name (letters and spaces only, 2-50 characters)"
+        class="w-full border border-gray-300 text-black bg-white rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-400 mb-4" />
+
+      <input type="tel" name="phone" id="phone" required placeholder="Your phone number"
+        pattern="^\d{10}$"
+        title="Please enter a 10-digit phone number"
+        class="w-full border border-gray-300 text-black bg-white rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-400 mb-4" />
+
+      <button type="submit"
+        class="w-full font-semibold py-2 rounded-lg"
+        style="background-color: #F25835; color: white;">
+        Submit
+      </button>
+    </form>
+  </div>
+</div>
+
+<!-- Toast Container -->
+<div id="toast" 
+     class="fixed bottom-6 right-6 hidden bg-green-500 text-white px-6 py-3 rounded shadow-lg
+            font-semibold drop-shadow-lg transition-opacity duration-500 ease-in-out opacity-0"
+     role="alert" aria-live="assertive" aria-atomic="true">
+  <span id="toast-message"></span>
+</div>
+
+<script>
+  const toast = document.getElementById('toast');
+  const toastMessage = document.getElementById('toast-message');
+
+  function showToast(message, success = true) {
+    toastMessage.textContent = message;
+    toast.style.backgroundColor = success ? '#16a34a' : '#dc2626'; // Green or Red
+    toast.classList.remove('hidden');
+    toast.classList.add('opacity-100');
+
+    // Hide after 3 seconds
+    setTimeout(() => {
+      toast.classList.remove('opacity-100');
+      toast.classList.add('opacity-0');
+      setTimeout(() => {
+        toast.classList.add('hidden');
+      }, 500);
+    }, 3000);
+  }
+
+  document.getElementById('contactForm').addEventListener('submit', async function (e) {
+    e.preventDefault();
+    
+    const form = e.target;
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch('/submit-contact', {
+        method: 'POST',
+        body: formData
+      });
+
+      const result = await response.json();
+
+      if (result.status === 'success') {
+        showToast("Submission Successful!", true);
+        document.getElementById('popupForm').classList.add('hidden');
+        form.reset();
+      } else {
+        showToast(result.message, false);
+      }
+    } catch (err) {
+      showToast("Something went wrong. Please try again.", false);
+    }
+  });
+
+  document.getElementById('closePopup').addEventListener('click', function () {
+    document.getElementById('popupForm').classList.add('hidden');
+  });
+</script>
+
 <!-- Footer Section -->
 <footer class="bg-white text-gray-600 border-t border-gray-200">
   <div class="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
@@ -222,18 +321,13 @@
       <div>
         <h2 class="text-base font-semibold tracking-wide mb-2" style="color: #F25835;">Social</h2>
         <div class="flex gap-4">
-          <a href="#" aria-label="Twitter" class="hover:opacity-80" style="color: #6B7280;">
-            <svg fill="currentColor" viewBox="0 0 24 24" class="w-5 h-5">
-              <path
-                d="M24 4.6c-0.9.4-1.8.7-2.8.8 1-.6 1.8-1.6 2.2-2.7-1 .6-2 1-3.1 1.2C18.4 2.9 17 2.3 15.6 2.3c-2.7 0-4.9 2.2-4.9 4.9 0 .4 0 .8.1 1.1C7.7 8.1 4.1 6.1 1.7 3.1 1.2 3.9 1 4.7 1 5.6c0 1.7.9 3.2 2.2 4.1-0.9 0-1.7-.3-2.4-.7 0 2.4 1.7 4.4 3.9 4.8-.4.1-.8.2-1.3.2-.3 0-.6 0-.9-.1.6 2 2.4 3.5 4.5 3.6-1.6 1.2-3.5 1.8-5.6 1.8-.4 0-.8 0-1.2-.1 2 1.3 4.5 2 7.1 2 8.5 0 13.2-7 13.2-13.1 0-.2 0-.4 0-.6.9-.6 1.7-1.5 2.3-2.4z" />
-            </svg>
-          </a>
-          <a href="#" aria-label="LinkedIn" class="hover:opacity-80" style="color: #6B7280;">
-            <svg fill="currentColor" viewBox="0 0 24 24" class="w-5 h-5">
-              <path
-                d="M20.4 20.4h-3.6V14c0-1.5-.5-2.5-1.9-2.5s-2.1 1-2.1 2.5v6.4H9.1V9.5h3.4v1.5c.5-.8 1.3-1.5 2.7-1.5 2 0 3.5 1.3 3.5 4v6.9zM5.3 8.1c-1.2 0-2-.8-2-1.8s.8-1.8 2-1.8 2 .8 2 1.8-.8 1.8-2 1.8zM3.5 20.4h3.6V9.5H3.5v10.9zM22.2 0H1.8C.8 0 0 .8 0 1.8v20.3C0 23.2.8 24 1.8 24h20.3c1 0 1.8-.8 1.8-1.8V1.8c0-1-.8-1.8-1.8-1.8z" />
-            </svg>
-          </a>
+          <!-- Instagram -->
+    <a href="#" aria-label="Instagram" class="hover:opacity-80">
+      <svg fill="currentColor" viewBox="0 0 24 24" class="w-5 h-5">
+        <path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.9.3 2.3.5.6.3 1.1.7 1.6 1.2.5.5.9 1 1.2 1.6.2.4.4 1.1.5 2.3.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.3 1.9-.5 2.3-.3.6-.7 1.1-1.2 1.6-.5.5-1 .9-1.6 1.2-.4.2-1.1.4-2.3.5-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-1.9-.3-2.3-.5a5.3 5.3 0 0 1-2.8-2.8c-.2-.4-.4-1.1-.5-2.3C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c.1-1.2.3-1.9.5-2.3A5.3 5.3 0 0 1 5.6 2.6c.4-.2 1.1-.4 2.3-.5C8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.1 0-3.5 0-4.8.1-.9.1-1.4.2-1.7.4a3.6 3.6 0 0 0-1.3 1.3c-.2.3-.3.8-.4 1.7-.1 1.3-.1 1.7-.1 4.8s0 3.5.1 4.8c.1.9.2 1.4.4 1.7.3.5.8 1 1.3 1.3.3.2.8.3 1.7.4 1.3.1 1.7.1 4.8.1s3.5 0 4.8-.1c.9-.1 1.4-.2 1.7-.4a3.6 3.6 0 0 0 1.3-1.3c.2-.3.3-.8.4-1.7.1-1.3.1-1.7.1-4.8s0-3.5-.1-4.8c-.1-.9-.2-1.4-.4-1.7a3.6 3.6 0 0 0-1.3-1.3c-.3-.2-.8-.3-1.7-.4-1.3-.1-1.7-.1-4.8-.1zM12 6.6a5.4 5.4 0 1 1 0 10.8 5.4 5.4 0 0 1 0-10.8zm0 1.8a3.6 3.6 0 1 0 0 7.2 3.6 3.6 0 0 0 0-7.2zm5.2-.9a1.2 1.2 0 1 1-2.4 0 1.2 1.2 0 0 1 2.4 0z"/>
+      </svg>
+    </a>
+
         </div>
       </div>
 
@@ -249,7 +343,51 @@
 <!-- JavaScript for dynamic year -->
 <script>
   document.getElementById("year").textContent = new Date().getFullYear();
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const popup = document.getElementById("popupForm");
+    const closeBtn = document.getElementById("closePopup");
+    const form = document.getElementById("contactForm");
+
+    if (!localStorage.getItem("popupDismissed")) {
+      popup.classList.remove("hidden");
+    }
+
+    closeBtn.addEventListener("click", () => {
+      popup.classList.add("hidden");
+      localStorage.setItem("popupDismissed", "true");
+    });
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const phone = form.phone.value;
+      console.log("Phone submitted:", phone);
+      popup.classList.add("hidden");
+      localStorage.setItem("popupDismissed", "true");
+    });
+  });
+
+   function validateForm() {
+    const name = document.getElementById("name").value.trim();
+    const phone = document.getElementById("phone").value.trim();
+    const nameRegex = /^[a-zA-Z\s]{2,50}$/;
+    const phoneRegex = /^\d{10}$/;
+
+    if (!nameRegex.test(name)) {
+      alert("Please enter a valid name (letters and spaces only).");
+      return false;
+    }
+
+    if (!phoneRegex.test(phone)) {
+      alert("Please enter a valid 10-digit phone number.");
+      return false;
+    }
+
+    return true;
+  };
 </script>
+
+
 
 
   </body>

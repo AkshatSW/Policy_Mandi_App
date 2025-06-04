@@ -1,4 +1,8 @@
-from flask import Flask, render_template, request, redirect, url_for, flash
+from flask import Flask, render_template, request, redirect
+import smtplib
+from email.mime.text import MIMEText
+import csv
+import os
 
 app = Flask(__name__)
 
@@ -15,12 +19,47 @@ def Contact():
     return render_template('Contact.html')
 
 @app.route('/careers')
-def careers ():
+def careers():
     return render_template('careers.html')
 
 @app.route('/webmail')
 def login():
     return redirect("https://p3plzcpnl505166.prod.phx3.secureserver.net:2096/cpsess2752899820/3rdparty/roundcube/?_task=mail&_mbox=INBOX", code=302)
+
+@app.route('/submit-contact', methods=['POST'])
+def submit_contact():
+    name = request.form.get('name')
+    phone = request.form.get('phone')
+
+    # Get values from environment variables
+    sender_email = os.environ.get('SENDER_EMAIL')
+    sender_password = os.environ.get('SENDER_PASSWORD')
+    recipient_email = os.environ.get('RECIPIENT_EMAIL')
+
+    subject = "New Contact Form Submission"
+    body = f"Name: {name}\nPhone: {phone}"
+
+    msg = MIMEText(body)
+    msg['Subject'] = subject
+    msg['From'] = sender_email
+    msg['To'] = recipient_email
+
+    try:
+        # Save to CSV
+        with open('contacts.csv', 'a', newline='') as file:
+            writer = csv.writer(file)
+            if os.stat('contacts.csv').st_size == 0:
+                writer.writerow(['Name', 'Phone'])
+            writer.writerow([name, phone])
+
+        # Send email via Gmail SMTP
+        with smtplib.SMTP_SSL("smtp.gmail.com", 465) as server:
+            server.login(sender_email, sender_password)
+            server.send_message(msg)
+
+        return {"status": "success", "message": "Form submitted successfully!"}
+    except Exception as e:
+        return {"status": "error", "message": f"Failed to send: {str(e)}"}
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
