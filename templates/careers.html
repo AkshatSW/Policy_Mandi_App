@@ -23,52 +23,103 @@
         </p>
     </div>
 
-    <!-- Open Positions Section -->
-    <div class="lg:py-24 md:py-16 py-10 bg-light xl:px-0 px-10">
-        <h2 class="text-primary text-center font-manrope lg:text-4xl text-3xl font-bold leading-10 mb-14">Open Positions</h2>
-        <div class="lg:max-w-3xl md:max-w-xl sm:max-w-md max-w-sm mx-auto border border-primary bg-white rounded-2xl p-12">
-            <!-- Brand Ambassador -->
-            <div class="flex justify-between gap-x-8 py-6 border-b border-primary">
-                <h3 class="text-primary text-xl font-medium leading-8">Brand Ambassador</h3>
-                <button class="w-20 h-9 rounded-full bg-cta hover:bg-highlight transition-all duration-700 text-light text-xs font-semibold leading-4">Apply</button>
-            </div>
+   <!-- Open Positions Section -->
+<div class="lg:py-24 md:py-16 py-10 bg-light xl:px-0 px-10">
+  <h2 class="text-primary text-center font-manrope lg:text-4xl text-3xl font-bold leading-10 mb-14">
+    Open Positions
+  </h2>
+
+  <div class="lg:max-w-3xl md:max-w-xl sm:max-w-md max-w-sm mx-auto border border-primary bg-white rounded-2xl p-8">
+    
+    <!-- Job Card -->
+    <div>
+      <!-- Job Header -->
+      <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-y-4 pb-4 border-b border-primary">
+        <h3 class="text-primary text-2xl font-semibold">Consultant</h3>
+        <div class="flex flex-col sm:flex-row sm:gap-x-4 gap-y-2 w-full sm:w-auto">
+          <button id="toggleBtn"
+            onclick="toggleDetails()"
+            class="w-full sm:w-auto px-6 py-3 rounded-full transition-all duration-300 text-white text-base font-semibold bg-cta">
+            See Details
+          </button>
+          <a href="https://tally.so/r/nGj66j" target="_blank" class="w-full sm:w-auto px-6 py-3 rounded-full bg-cta hover:bg-highlight transition-all duration-300 text-white text-base font-semibold text-center">
+            Apply
+          </a>
         </div>
+      </div>
+
+      <!-- Job Details -->
+      <div id="jobDetails" class="hidden transition-all duration-500 ease-in-out mt-6 scroll-mt-20">
+        <p class="text-primary text-base leading-7 mb-4">
+          Become a Consultant for Policy Mandi and represent a forward-thinking, tech-driven company.
+        </p>
+
+        <p class="text-primary text-base leading-7 mb-5">
+          As a Consultant, you will have the opportunity to represent Policy Mandi in your community, spread the word about our innovative products, and help us grow our presence in the market.
+        </p>
+
+        <h4 class="text-primary text-lg font-semibold mb-2">Responsibilities</h4>
+        <ul class="list-disc pl-5 text-primary text-base leading-6 mb-4">
+          <li>Promote Policy Mandi on social media platforms</li>
+          <li>Share feedback and ideas with our marketing team</li>
+          <li>Attend community events and represent the Policy Mandi brand</li>
+          <li>Help spread the word about our career opportunities</li>
+        </ul>
+
+        <h4 class="text-primary text-lg font-semibold mb-2">Requirements</h4>
+        <ul class="list-disc pl-5 text-primary text-base leading-6 mb-5">
+          <li>Strong social media presence</li>
+          <li>Passion for technology and innovation</li>
+          <li>Excellent communication skills</li>
+          <li>Ability to work independently and as part of a team</li>
+        </ul>
+      </div>
     </div>
+  </div>
+</div>
 
-    <!-- Join Us as a Brand Ambassador Section -->
-    <div class="lg:py-24 md:py-16 py-10 bg-light xl:px-0 px-10">
-        <h2 class="text-primary text-center font-manrope lg:text-4xl text-3xl font-bold leading-10 mb-14">Join Us as a Brand Ambassador</h2>
-        <div class="lg:max-w-3xl md:max-w-xl sm:max-w-md max-w-sm mx-auto border border-primary bg-white rounded-2xl p-12">
-            <div class="text-primary text-xl font-medium leading-8 mb-4">
-                Become a Brand Ambassador for Policy Mandi and represent a forward-thinking, tech-driven company.
-            </div>
-            <p class="text-primary text-lg font-normal leading-7 mb-5">
-                As a Brand Ambassador, you will have the opportunity to represent Policy Mandi in your community, spread the word about our innovative products, and help us grow our presence in the market. We are looking for individuals with passion, energy, and a strong network to help us expand.
-            </p>
+<!-- Smooth Scroll & Toggle Script -->
+<script>
+  function toggleDetails() {
+    const details = document.getElementById('jobDetails');
+    const toggleBtn = document.getElementById('toggleBtn');
+    const isHidden = details.classList.contains('hidden');
 
-            <div class="flex justify-between gap-x-8 py-6 border-t border-primary">
-                <h3 class="text-primary text-xl font-medium leading-8">Responsibilities</h3>
-            </div>
-            <ul class="list-disc pl-5 text-primary text-lg font-normal leading-7 mb-5">
-                <li>Promote Policy Mandi on social media platforms</li>
-                <li>Share feedback and ideas with our marketing team</li>
-                <li>Attend community events and represent the Policy Mandi brand</li>
-                <li>Help spread the word about our career opportunities</li>
-            </ul>
+    if (isHidden) {
+      details.classList.remove('hidden');
+      toggleBtn.classList.remove('bg-cta');
+      toggleBtn.classList.add('bg-highlight');
+      toggleBtn.textContent = 'Hide Details';
 
-            <div class="flex justify-between gap-x-8 py-6 border-t border-primary">
-                <h3 class="text-primary text-xl font-medium leading-8">Requirements</h3>
-            </div>
-            <ul class="list-disc pl-5 text-primary text-lg font-normal leading-7 mb-5">
-                <li>Strong social media presence</li>
-                <li>Passion for technology and innovation</li>
-                <li>Excellent communication skills</li>
-                <li>Ability to work independently and as part of a team</li>
-            </ul>
+      // Smooth scroll (800ms)
+      setTimeout(() => {
+        smoothScrollTo(details.offsetTop - 80, 800);
+      }, 100);
+    } else {
+      details.classList.add('hidden');
+      toggleBtn.classList.remove('bg-highlight');
+      toggleBtn.classList.add('bg-cta');
+      toggleBtn.textContent = 'See Details';
+    }
+  }
 
-            <button class="w-32 h-10 rounded-full bg-cta hover:bg-highlight transition-all duration-700 text-light text-xs font-semibold leading-4">Apply Now</button>
-        </div>
-    </div>
+  function smoothScrollTo(targetY, duration) {
+    const startY = window.scrollY || window.pageYOffset;
+    const distance = targetY - startY;
+    const startTime = performance.now();
+
+    function animation(currentTime) {
+      const timeElapsed = currentTime - startTime;
+      const progress = Math.min(timeElapsed / duration, 1);
+      const ease = 0.5 * (1 - Math.cos(Math.PI * progress));
+      window.scrollTo(0, startY + distance * ease);
+      if (progress < 1) requestAnimationFrame(animation);
+    }
+
+    requestAnimationFrame(animation);
+  }
+</script>
+
 </section>
 
 {% endblock %}
