@@ -3,6 +3,11 @@ import smtplib
 from email.mime.text import MIMEText
 import csv
 import os
+from dotenv import load_dotenv
+
+# Load .env only if exists, useful for local dev
+if os.path.exists('.env'):
+    load_dotenv('.env')
 
 app = Flask(__name__)
 
@@ -34,10 +39,12 @@ def submit_contact():
     name = request.form.get('name')
     phone = request.form.get('phone')
 
-    # Get values from environment variables
-    sender_email = os.environ.get('SENDER_EMAIL')
-    sender_password = os.environ.get('SENDER_PASSWORD')
-    recipient_email = os.environ.get('RECIPIENT_EMAIL')
+    # Read from environment variables (works both locally and prod)
+    smtp_server = os.getenv('SMTP_SERVER', 'smtp.secureserver.net')
+    smtp_port = int(os.getenv('SMTP_PORT', 465))
+    sender_email = os.getenv('SENDER_EMAIL')
+    sender_password = os.getenv('SENDER_PASSWORD')
+    recipient_email = os.getenv('RECIPIENT_EMAIL')
 
     subject = "New Contact Form Submission"
     body = f"Name: {name}\nPhone: {phone}"
@@ -55,16 +62,19 @@ def submit_contact():
                 writer.writerow(['Name', 'Phone'])
             writer.writerow([name, phone])
 
-        # Send email via Gmail SMTP
-        with smtplib.SMTP_SSL("smtp.gmail.com", 465) as server:
+        print("Connecting to SMTP server...")
+        with smtplib.SMTP_SSL(smtp_server, smtp_port) as server:
+            server.set_debuglevel(1)  # Debug SMTP conversation
             server.login(sender_email, sender_password)
+            print("Login successful. Sending email...")
             server.send_message(msg)
+            print("Email sent successfully.")
 
-        return {"status": "success", "message": "Form submitted successfully!"}
+        return {"status": "success", "message": "Form submitted and email sent!"}
     except Exception as e:
+        print(f"Error: {str(e)}")
         return {"status": "error", "message": f"Failed to send: {str(e)}"}
 
-from flask import request
 @app.context_processor
 def inject_request():
     return dict(request=request)

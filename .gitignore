@@ -1,0 +1,28 @@
+# Ignore Python cache files
+__pycache__/
+*.py[cod]
+
+# Ignore environment files
+.env
+*.env
+
+# Ignore test files
+testtest.py
+
+# Ignore init files (optional — uncomment if you want to ignore all __init__.py)
+# __init__.py
+
+# Ignore virtual environments
+venv/
+ENV/
+env/
+
+# Ignore OS-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore IDEs and editors
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
