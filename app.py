@@ -39,12 +39,12 @@ def submit_contact():
     name = request.form.get('name')
     phone = request.form.get('phone')
 
-    # Read from environment variables (works both locally and prod)
-    smtp_server = os.getenv('SMTP_SERVER', 'smtp.secureserver.net')
-    smtp_port = int(os.getenv('SMTP_PORT', 465))
-    sender_email = os.getenv('SENDER_EMAIL')
-    sender_password = os.getenv('SENDER_PASSWORD')
-    recipient_email = os.getenv('RECIPIENT_EMAIL')
+    # Read from environment variables (configured in cPanel > Setup Python App)
+    smtp_server = os.environ.get('SMTP_SERVER')
+    smtp_port = int(os.environ.get('SMTP_PORT', 465))
+    sender_email = os.environ.get('SENDER_EMAIL')
+    sender_password = os.environ.get('SENDER_PASSWORD')
+    recipient_email = os.environ.get('RECIPIENT_EMAIL')
 
     subject = "New Contact Form Submission"
     body = f"Name: {name}\nPhone: {phone}"
@@ -64,7 +64,7 @@ def submit_contact():
 
         print("Connecting to SMTP server...")
         with smtplib.SMTP_SSL(smtp_server, smtp_port) as server:
-            server.set_debuglevel(1)  # Debug SMTP conversation
+            server.set_debuglevel(1)
             server.login(sender_email, sender_password)
             print("Login successful. Sending email...")
             server.send_message(msg)
@@ -74,7 +74,7 @@ def submit_contact():
     except Exception as e:
         print(f"Error: {str(e)}")
         return {"status": "error", "message": f"Failed to send: {str(e)}"}
-
+    
 @app.context_processor
 def inject_request():
     return dict(request=request)
