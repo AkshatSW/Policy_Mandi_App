@@ -1,0 +1,7 @@
+---
+deployment:
+  tasks:
+    - export FLASK_APP=app.py
+    - source /home/gi4zjtrj4ty3/virtualenv/wsgi_app/3.11/bin/activate
+    - pip install -r requirements.txt
+    - touch tmp/restart.txt
