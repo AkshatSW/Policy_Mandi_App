@@ -8,118 +8,143 @@
 {% block twitter_description %}Explore career opportunities at Policy Mandi. Join our innovative team dedicated to making insurance simple and accessible.{% endblock %}
 
 {% block body %}
-<section> 
-    <!-- Career Section -->
-    <div class="xl:py-28 md:py-20 py-10 xl:px-0 px-10 bg-white">
-        <span class="w-fit mx-auto flex items-center justify-center bg-white text-primary border border-primary rounded-full text-center text-sm font-medium leading-5 px-3 py-1 mb-5">
-            Careers at Policy Mandi
-        </span>
-        <h1 class="text-primary text-center font-manrope lg:text-5xl text-4xl font-bold leading-tight mb-8">
-            Unlock new career <br> opportunities at Policy Mandi 
-        </h1>
-        <p class="text-primary text-center text-lg font-normal leading-7">
-            Policy Mandi embraces a youthful and flexible spirit, enabling us to swiftly adapt to market research, 
-            conditions, and customer demands through our advanced technology. 
-        </p>
-    </div>
+<section>
+  <!-- Career Section -->
+  <div class="xl:py-28 md:py-20 py-10 xl:px-0 px-10 bg-white">
+    <span
+      class="w-fit mx-auto flex items-center justify-center bg-white text-primary border border-primary rounded-full text-center text-sm font-medium leading-5 px-3 py-1 mb-5"
+      >Careers at Policy Mandi</span
+    >
+    <h1
+      class="text-primary text-center font-manrope lg:text-5xl text-4xl font-bold leading-tight mb-8"
+    >
+      Unlock new career <br />
+      opportunities at Policy Mandi
+    </h1>
+    <p class="text-primary text-center text-lg font-normal leading-7">
+      Policy Mandi embraces a youthful and flexible spirit, enabling us to swiftly
+      adapt to market research,
+      conditions, and customer demands through our advanced technology.
+    </p>
+  </div>
 
-   <!-- Open Positions Section -->
-<div class="lg:py-24 md:py-16 py-10 bg-light xl:px-0 px-10">
-  <h2 class="text-primary text-center font-manrope lg:text-4xl text-3xl font-bold leading-10 mb-14">
-    Open Positions
-  </h2>
+  <!-- Open Positions Section -->
+  <div class="lg:py-24 md:py-16 py-10 bg-light xl:px-0 px-10">
+    <h2
+      class="text-primary text-center font-manrope lg:text-4xl text-3xl font-bold leading-10 mb-14"
+    >
+      Open Positions
+    </h2>
 
-  <div class="lg:max-w-3xl md:max-w-xl sm:max-w-md max-w-sm mx-auto border border-primary bg-white rounded-2xl p-8">
-    
-    <!-- Job Card -->
-    <div>
-      <!-- Job Header -->
-      <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-y-4 pb-4 border-b border-primary">
-        <h3 class="text-primary text-2xl font-semibold">Consultant</h3>
-        <div class="flex flex-col sm:flex-row sm:gap-x-4 gap-y-2 w-full sm:w-auto">
-          <button id="toggleBtn"
-            onclick="toggleDetails()"
-            class="w-full sm:w-auto px-6 py-3 rounded-full transition-all duration-300 text-white text-base font-semibold bg-cta">
-            See Details
-          </button>
-          <a href="https://tally.so/r/nGj66j" target="_blank" class="w-full sm:w-auto px-6 py-3 rounded-full bg-cta hover:bg-highlight transition-all duration-300 text-white text-base font-semibold text-center">
-            Apply
-          </a>
+    <div
+      class="lg:max-w-3xl md:max-w-xl sm:max-w-md max-w-sm mx-auto border border-primary bg-white rounded-2xl p-8"
+    >
+      <!-- Job Card -->
+      <div>
+        <!-- Job Header -->
+        <div
+          class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-y-4 pb-4 border-b border-primary"
+        >
+          <h3 class="text-primary text-2xl font-semibold">Consultant</h3>
+          <div
+            class="flex flex-col sm:flex-row sm:gap-x-4 gap-y-2 w-full sm:w-auto"
+          >
+            <button
+              id="toggleBtn"
+              aria-expanded="false"
+              aria-controls="jobDetails"
+              onclick="toggleDetails(this)"
+              class="w-full sm:w-auto px-6 py-3 rounded-full transition-all duration-300 text-white text-base font-semibold bg-cta"
+            >
+              See Details
+            </button>
+            <a
+              href="https://tally.so/r/nGj66j"
+              target="_blank"
+              class="w-full sm:w-auto px-6 py-3 rounded-full bg-cta hover:bg-highlight transition-all duration-300 text-white text-base font-semibold text-center"
+              >Apply</a
+            >
+          </div>
         </div>
-      </div>
 
-      <!-- Job Details -->
-      <div id="jobDetails" class="hidden transition-all duration-500 ease-in-out mt-6 scroll-mt-20">
-        <p class="text-primary text-base leading-7 mb-4">
-          Become a Consultant for Policy Mandi and represent a forward-thinking, tech-driven company.
-        </p>
+        <!-- Job Details -->
+        <div
+          id="jobDetails"
+          class="hidden transition-all duration-500 ease-in-out mt-6 scroll-mt-20"
+        >
+          <p class="text-primary text-base leading-7 mb-4">
+            Become a Consultant for Policy Mandi and represent a forward-thinking,
+            tech-driven company.
+          </p>
 
-        <p class="text-primary text-base leading-7 mb-5">
-          As a Consultant, you will have the opportunity to represent Policy Mandi in your community, spread the word about our innovative products, and help us grow our presence in the market.
-        </p>
+          <p class="text-primary text-base leading-7 mb-5">
+            As a Consultant, you will have the opportunity to represent Policy Mandi
+            in your community, spread the word about our innovative products, and
+            help us grow our presence in the market.
+          </p>
 
-        <h4 class="text-primary text-lg font-semibold mb-2">Responsibilities</h4>
-        <ul class="list-disc pl-5 text-primary text-base leading-6 mb-4">
-          <li>Promote Policy Mandi on social media platforms</li>
-          <li>Share feedback and ideas with our marketing team</li>
-          <li>Attend community events and represent the Policy Mandi brand</li>
-          <li>Help spread the word about our career opportunities</li>
-        </ul>
+          <h4 class="text-primary text-lg font-semibold mb-2">Responsibilities</h4>
+          <ul class="list-disc pl-5 text-primary text-base leading-6 mb-4">
+            <li>Promote Policy Mandi on social media platforms</li>
+            <li>Share feedback and ideas with our marketing team</li>
+            <li>Attend community events and represent the Policy Mandi brand</li>
+            <li>Help spread the word about our career opportunities</li>
+          </ul>
 
-        <h4 class="text-primary text-lg font-semibold mb-2">Requirements</h4>
-        <ul class="list-disc pl-5 text-primary text-base leading-6 mb-5">
-          <li>Strong social media presence</li>
-          <li>Passion for technology and innovation</li>
-          <li>Excellent communication skills</li>
-          <li>Ability to work independently and as part of a team</li>
-        </ul>
+          <h4 class="text-primary text-lg font-semibold mb-2">Requirements</h4>
+          <ul class="list-disc pl-5 text-primary text-base leading-6 mb-5">
+            <li>Strong social media presence</li>
+            <li>Passion for technology and innovation</li>
+            <li>Excellent communication skills</li>
+            <li>Ability to work independently and as part of a team</li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-<!-- Smooth Scroll & Toggle Script -->
-<script>
-  function toggleDetails() {
-    const details = document.getElementById('jobDetails');
-    const toggleBtn = document.getElementById('toggleBtn');
-    const isHidden = details.classList.contains('hidden');
+  <!-- Smooth Scroll & Toggle Script -->
+  <script>
+    // Pass the clicked button element to toggleDetails
+    function toggleDetails(button) {
+      const details = document.getElementById("jobDetails");
+      const isHidden = details.classList.contains("hidden");
 
-    if (isHidden) {
-      details.classList.remove('hidden');
-      toggleBtn.classList.remove('bg-cta');
-      toggleBtn.classList.add('bg-highlight');
-      toggleBtn.textContent = 'Hide Details';
+      if (isHidden) {
+        details.classList.remove("hidden");
+        button.classList.remove("bg-cta");
+        button.classList.add("bg-highlight");
+        button.textContent = "Hide Details";
+        button.setAttribute("aria-expanded", "true");
 
-      // Smooth scroll (800ms)
-      setTimeout(() => {
-        smoothScrollTo(details.offsetTop - 80, 800);
-      }, 100);
-    } else {
-      details.classList.add('hidden');
-      toggleBtn.classList.remove('bg-highlight');
-      toggleBtn.classList.add('bg-cta');
-      toggleBtn.textContent = 'See Details';
-    }
-  }
-
-  function smoothScrollTo(targetY, duration) {
-    const startY = window.scrollY || window.pageYOffset;
-    const distance = targetY - startY;
-    const startTime = performance.now();
-
-    function animation(currentTime) {
-      const timeElapsed = currentTime - startTime;
-      const progress = Math.min(timeElapsed / duration, 1);
-      const ease = 0.5 * (1 - Math.cos(Math.PI * progress));
-      window.scrollTo(0, startY + distance * ease);
-      if (progress < 1) requestAnimationFrame(animation);
+        // Smooth scroll (800ms)
+        setTimeout(() => {
+          smoothScrollTo(details.offsetTop - 80, 800);
+        }, 100);
+      } else {
+        details.classList.add("hidden");
+        button.classList.remove("bg-highlight");
+        button.classList.add("bg-cta");
+        button.textContent = "See Details";
+        button.setAttribute("aria-expanded", "false");
+      }
     }
 
-    requestAnimationFrame(animation);
-  }
-</script>
+    function smoothScrollTo(targetY, duration) {
+      const startY = window.scrollY || window.pageYOffset;
+      const distance = targetY - startY;
+      const startTime = performance.now();
 
+      function animation(currentTime) {
+        const timeElapsed = currentTime - startTime;
+        const progress = Math.min(timeElapsed / duration, 1);
+        const ease = 0.5 * (1 - Math.cos(Math.PI * progress));
+        window.scrollTo(0, startY + distance * ease);
+        if (progress < 1) requestAnimationFrame(animation);
+      }
+
+      requestAnimationFrame(animation);
+    }
+  </script>
 </section>
-
 {% endblock %}

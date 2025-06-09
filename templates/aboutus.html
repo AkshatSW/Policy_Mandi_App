@@ -61,7 +61,7 @@
 
 <!-- Meet the Team -->
 <div class="mb-10">
-  <h3 class="text-xl font-semibold mb-6 text-center" style="color: #F25835;">Core Team</h3>
+    <h3 class="text-xl font-semibold mb-2" style="color: #F25835;">Core Team</h3>
   <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 justify-items-center">
 
     <!-- Sandeep Pandey -->
@@ -149,108 +149,7 @@
   </div>
 </section>
 
-<style>
-  /* Arrow container */
-  .slider-arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 40px;
-    height: 40px;
-    background-color: #F25835;
-    border-radius: 50%;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    z-index: 10;
-  }
 
-  .slider-arrow:hover,
-  .slider-arrow:focus {
-    background-color: #8C463F;
-    outline: none;
-  }
 
-  /* Left arrow position and animation */
-  .slider-arrow-left {
-    left: 10px;
-    animation: slideLeft 1.5s ease-in-out infinite alternate;
-  }
-
-  /* Right arrow position and animation */
-  .slider-arrow-right {
-    right: 10px;
-    animation: slideRight 1.5s ease-in-out infinite alternate;
-  }
-
-  /* Sliding animations */
-  @keyframes slideLeft {
-    0% { transform: translateY(-50%) translateX(0); }
-    100% { transform: translateY(-50%) translateX(-10px); }
-  }
-
-  @keyframes slideRight {
-    0% { transform: translateY(-50%) translateX(0); }
-    100% { transform: translateY(-50%) translateX(10px); }
-  }
-
-  /* SVG arrows */
-  .slider-arrow::before {
-    content: '';
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-  }
-
-  .slider-arrow-left::before {
-    background-image: url('data:image/svg+xml;utf8,<svg fill="%23fff" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>');
-  }
-
-  .slider-arrow-right::before {
-    background-image: url('data:image/svg+xml;utf8,<svg fill="%23fff" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg>');
-  }
-</style>
-
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const carouselInner = document.getElementById('carousel-inner');
-    const totalItems = carouselInner.children.length;
-    let currentIndex = 0;
-
-    // Show slide by updating transform
-    function showSlide(index) {
-      if (index < 0) index = totalItems - 1;
-      if (index >= totalItems) index = 0;
-      currentIndex = index;
-      carouselInner.style.transform = `translateX(-${index * 100}%)`;
-    }
-
-    // Left arrow click handler
-    document.querySelector('.slider-arrow-left').addEventListener('click', () => {
-      showSlide(currentIndex - 1);
-    });
-
-    // Right arrow click handler
-    document.querySelector('.slider-arrow-right').addEventListener('click', () => {
-      showSlide(currentIndex + 1);
-    });
-
-    // Optional: allow keyboard navigation on arrows
-    document.querySelectorAll('.slider-arrow').forEach(arrow => {
-      arrow.addEventListener('keydown', e => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          arrow.click();
-        }
-      });
-    });
-  });
-</script>
 
 {% endblock %}
