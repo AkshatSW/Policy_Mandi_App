@@ -1,0 +1,57 @@
+<footer class="bg-white text-gray-600 border-t border-gray-200">
+  <div class="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
+    <div class="grid gap-10 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+
+      <!-- Logo & Description -->
+      <div class="sm:col-span-2">
+        <a href="/" class="flex items-center">
+          <img src="{{ url_for('static', filename='assets/images/logo.png') }}" alt="Policy Mandi" class="w-20 h-auto mr-3">
+          <span class="text-xl font-bold uppercase tracking-wide" style="color: #F25835;">Policy Mandi &#8482;</span>
+        </a>
+        <p class="mt-6 text-sm">At Policy Mandi, we believe insurance should be simple, transparent, and built around you — whether it’s life, health, or any other form of protection.</p>
+        <p class="mt-4 text-sm">We connect you with smart solutions that safeguard your future and bring peace of mind.</p>
+      </div>
+
+      <!-- Contact Info -->
+      <div class="flex flex-col gap-4 text-sm">
+        <h2 class="text-base font-semibold tracking-wide" style="color: #F25835;">Contact</h2>
+
+        <div class="flex items-center gap-3">
+          <img src="{{ url_for('static', filename='assets/images/call.svg') }}" alt="Call Icon" class="w-5 h-5" />
+          <a href="tel:+917619911555" class="hover:underline text-black">+91 76199 11555</a>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <img src="{{ url_for('static', filename='assets/images/whatsapp.svg') }}" alt="WhatsApp Icon" class="w-5 h-5" />
+          <a href="https://wa.me/917619911555" target="_blank" class="hover:underline text-black">WhatsApp</a>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <img src="{{ url_for('static', filename='assets/images/email.svg') }}" alt="Email Icon" class="w-5 h-5" />
+          <a href="mailto:hello@policymandi.in" class="hover:underline text-black">hello@policymandi.in</a>
+        </div>
+      </div>
+
+      <!-- Social Media -->
+      <div>
+        <h2 class="text-base font-semibold tracking-wide mb-2" style="color: #F25835;">Social</h2>
+        <div class="flex gap-4">
+          <a href="#" aria-label="Instagram" class="hover:opacity-80">
+            <svg fill="currentColor" viewBox="0 0 24 24" class="w-5 h-5">
+              <path d="..." /> <!-- keep your original Instagram path -->
+            </svg>
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="mt-10 pt-6 text-center text-sm text-gray-500 border-t border-gray-300">
+      © <span id="year"></span> Policy Mandi. All rights reserved.
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</footer>
